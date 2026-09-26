@@ -1,6 +1,6 @@
-# [Project name]
+# Hajra Kareem Hospital
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Professional, mobile-responsive informational website for Hajra Kareem Hospital in Faisalabad, Pakistan.
 
 ## Run & Operate
 
@@ -22,23 +22,30 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/hajra-kareem-hospital/src/App.tsx` — single-page website layout and interactions
+- `artifacts/hajra-kareem-hospital/src/data/hospitalData.ts` — editable hospital, doctor, service, contact, and location data
+- `artifacts/hajra-kareem-hospital/src/index.css` — site theme, responsive styling, and motion
+- `artifacts/hajra-kareem-hospital/public/assets/hajra-karim-logo.png` — supplied hospital logo
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The site is frontend-only because the requested inquiry flow is informational, not a payment or appointment-booking system.
+- Hospital content is separated from layout code in a commented data file so non-technical updates are localized.
+- The site uses the supplied logo and its black, red, and white identity rather than introducing unrelated branding.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The site helps patients and families quickly understand the hospital, browse services and doctor timings, locate the facility, call or WhatsApp the hospital, and send a simple inquiry.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Use clear, simple English only.
+- Do not invent medical claims, doctor details, timings, testimonials, statistics, or pricing.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Only Emergency and Gynecology services are stated as available 24 hours a day; do not add general hospital opening hours.
+- Cosmetic gynecology copy must keep the supplied consultation disclaimer and avoid guarantees or before/after claims.
 
 ## Pointers
 

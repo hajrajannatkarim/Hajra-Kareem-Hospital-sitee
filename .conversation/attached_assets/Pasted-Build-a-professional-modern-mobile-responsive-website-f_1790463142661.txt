@@ -1,0 +1,130 @@
+Build a professional, modern, mobile-responsive website for a real hospital called
+"Hajra Kareem Hospital" located in Faisalabad, Pakistan.
+
+IMPORTANT CONTEXT
+- This is a real medical facility. No e-commerce, no "add to cart," no payment
+  checkout flows. This is an informational site only.
+- All text must be in clear, simple English. Do not use Urdu anywhere.
+- The site must be easy for a non-technical person to update later — keep all
+  editable content (doctor names, timings, services, contact info) in one clearly
+  organized data file/section, separate from design/layout code, with comments
+  explaining what each field is, so names/timings/services/contact info can be
+  edited without touching the design.
+
+BRAND / THEME
+- Use the hospital's logo colors as the site's color scheme: black, red, and white,
+  with red as the primary accent color. (Do not use pink/magenta — that belongs to
+  unrelated marketing material, not this site.)
+- Clean, trustworthy, modern medical aesthetic. Plenty of white space, no clutter.
+- Tagline to display prominently: "Care • Compassion • Cure"
+
+SITE STRUCTURE / PAGES
+
+1. Home
+   - Hospital name, logo, tagline
+   - Short welcoming intro about the hospital
+   - Quick links to Services, Doctors, Contact
+   - Prominent banner/notice: "Emergency and Gynecology services are available
+     24 hours a day."
+   - Address visible in header or top bar
+
+2. About Us
+   - Short paragraph about the hospital's mission
+   - Facilities list: CTG machine, Doppler ultrasound machine, modern operation
+     theater, sterilization system, clinical laboratory, labor room, private rooms
+
+3. Services
+   General services:
+   - Major and minor operations
+   - Normal delivery
+   - Appendix surgery
+   - Hernia surgery
+   - Tonsil surgery
+   - Family planning consultation
+   - Child circumcision (modern methods)
+
+   Cosmetic Gynecology (separate section):
+   - Vaginal Rejuvenation
+   - Vaginal Tightening
+   - Stretch Marks Reduction
+   - Hymenoplasty
+   - Labiaplasty
+   - Vaginoplasty
+   - PRP Therapy
+   Include this honest disclaimer directly under this section:
+   "All cosmetic gynecology procedures are performed by qualified specialists
+   after consultation. Results vary by individual. Book a consultation to
+   discuss what is right for you."
+   Do NOT use exaggerated claims, guaranteed-result language, statistics, or
+   before/after photos.
+
+4. Our Doctors
+   Display as a card/grid layout, one card per doctor, each showing name,
+   qualification, specialty, and timing (where given). Store this list as a
+   simple, clearly commented array/data file so it's easy to add, remove, or
+   edit doctors later without touching the page design.
+
+   Doctor data:
+   1. Dr. Hooria Ali — MBBS, FCPS (II) — General Surgeon — 8pm to 8am, Sunday off
+   2. Dr. Ramsha Zulfiqar — MBBS (Pb.), FCPS (Pak) — Gynecologist and Obstetrics/
+      Fertility Specialist — 4pm to 6pm, Sunday off
+   3. Dr. Adnan Sarwar — MBBS, FCPS — Medicine Specialist — 9:30pm to 12:30am,
+      Sunday off
+   4. Dr. Sara Ramzan — MBBS (Pb.), FCPS (Pak) — Gynecologist and Obstetrics/
+      Fertility Specialist — 7pm to 9:30pm, Sunday off
+   5. Dr. Wasif Iqbal — MBBS, FCPS — Pediatrician, Children & Newborn Specialist —
+      6:30pm to 9:30pm, Sunday off
+   6. Dr. Huma — MBBS, FCPS — Medicine Specialist — 5:30pm to 6:30pm, Sunday off
+   7. Dr. Nayyara Hussain — MBBS, RMP — Gynecologist, Women & Child Diseases
+      Specialist — 8am to 2pm, Friday off
+   8. Dr. Saqib Sheikh — MBBS, FCPS (R) Med — Family Physician — 2pm to 8pm,
+      Sunday off
+   9. Dr. Danish Hassnain — MBBS, FCPS — ENT Specialist — 8pm to 11pm, Sunday off
+   10. Dr. Irfan Rasheed — MBBS, RMP — 8pm to 8am, Sunday off
+   11. Dr. Fahad Pervaiz — MBBS (QAMC), MS (Neurosurgery) — Neurosurgeon —
+       7:30pm to 10:30pm, Sunday off
+   12. Dr. Ayesha Mukhtar — MBBS, FCPS — Pediatrician, Children's Diseases
+       Specialist — (no timing displayed for this doctor)
+
+   Do not invent, guess, or add any doctor, qualification, specialty, or timing
+   beyond what is listed above.
+
+5. Location & Timings
+   - Full address: 186-D, Batala Colony, Babar Chowk, Faisalabad, Pakistan
+   - Clear notice: "Emergency and Gynecology services: open 24 hours a day."
+   - Note that other doctors' consultation timings vary — link to Doctors page
+   - Do not state a general hospital opening/closing time beyond the 24-hour
+     emergency/gynecology notice above
+   - Embed this exact Google Maps iframe (make it responsive — full width of its
+     container, not fixed at 600px — so it displays correctly on mobile and desktop):
+
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.5608661186016!2d73.09832297577883!3d31.39866985314452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392267e2684a29f1%3A0x61169ea436934787!2sHajrah%20Kareem%20Hospital!5e0!3m2!1sen!2s!4v1790462487336!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+   - Also add a "Get Directions" button that links to:
+     https://maps.app.goo.gl/kJZcbwz45EFpeb9VA
+
+6. Contact / Book Appointment
+   - Simple inquiry form (name, phone, message) — not a payment/booking system
+   - Display contact information exactly as follows (do not invent or alter any
+     number):
+     - Landline: 041-8500586
+     - WhatsApp: 0300-8655277
+   - Click-to-call functionality on the landline number
+   - WhatsApp button that opens a chat to 0300-8655277
+
+TECHNICAL REQUIREMENTS
+- Fully responsive (mobile, tablet, desktop)
+- Fast loading, clean code
+- All doctor/service/contact data stored in one clearly commented file/section,
+  separate from layout code, so it can be edited later without design knowledge
+- No shopping cart, no payment gateway, no pricing pages
+- Accessible: readable font sizes, strong color contrast (red/black on white),
+  descriptive alt text on all images
+
+CONTENT RULES FOR THE BUILDER
+- Do not invent doctor names, qualifications, specialties, timings, statistics,
+  testimonials, or "years of experience" figures that are not explicitly given
+  above.
+- Do not use unrealistic, exaggerated, or guaranteed-result marketing language
+  anywhere on the site, especially in the Cosmetic Gynecology section.
+- Ask me directly if any instruction here is ambiguous, rather than assuming.

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Hajra Kareem Hospital"
+description = "A professional, mobile-responsive informational website for Hajra Kareem Hospital in Faisalabad, with hospital information, services, doctors, location, timings, and appointment inquiries."
+version = "1.0.0"
+id = "artifacts/hajra-kareem-hospital"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19305
+
+[services.development]
+run = "pnpm --filter @workspace/hajra-kareem-hospital run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hajra-kareem-hospital", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hajra-kareem-hospital/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19305"
+BASE_PATH = "/"
