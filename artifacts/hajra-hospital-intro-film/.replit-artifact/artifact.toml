@@ -1,0 +1,29 @@
+kind = "video"
+videoAspectRatio = "9:16"
+previewPath = "/hajra-hospital-intro-film/"
+title = "Hajra Kareem Hospital — Intro Film"
+description = "A short vertical animated introduction to Hajra Kareem Hospital in Faisalabad, sharing its care message, confirmed services, location, and contact information."
+version = "1.0.0"
+id = "artifacts/hajra-hospital-intro-film"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/hajra-hospital-intro-film/" ]
+localPort = 21496
+
+[services.development]
+run = "pnpm --filter @workspace/hajra-hospital-intro-film run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hajra-hospital-intro-film", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hajra-hospital-intro-film/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21496"
+BASE_PATH = "/hajra-hospital-intro-film/"

@@ -1,0 +1,707 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'DM Sans', Arial, sans-serif;
+  color: #181719;
+  background: #fbfaf7;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --hk-red: #c9142e;
+  --hk-red-bright: #ef3340;
+  --hk-ink: #181719;
+  --hk-paper: #fbfaf7;
+  --hk-white: #fff;
+  --hk-muted: #797375;
+  --hk-display: 'DM Serif Display', Georgia, serif;
+  --hk-body: 'DM Sans', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: var(--hk-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font: inherit;
+}
+
+.film-canvas {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--hk-ink);
+}
+
+.film-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, clip-path;
+}
+
+.film-eyebrow {
+  margin: 0;
+  color: var(--hk-red);
+  font-size: clamp(0.72rem, 2.05vmin, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.17em;
+}
+
+.brand-crop {
+  position: absolute;
+  left: 50%;
+  overflow: hidden;
+  transform: translateX(-50%);
+  background: var(--hk-white);
+}
+
+.brand-crop img,
+.contact-brand-crop img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  width: 148vmin;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -50%);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.brand-crop img {
+  mix-blend-mode: multiply;
+}
+
+.film-carrier-layer {
+  position: absolute;
+  z-index: 30;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.film-carrier {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10vmin;
+  height: 10vmin;
+  border: 0.6vmin solid var(--hk-red);
+  border-radius: 50%;
+  opacity: 0.48;
+  transform: translate(-50%, -50%);
+  will-change: left, top, width, height, border-color;
+}
+
+/* 01 — white brand stage, with the supplied logo kept on white. */
+.scene-identity {
+  background: var(--hk-paper);
+  color: var(--hk-ink);
+}
+
+.scene-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(53, 38, 39, 0.3) 0.45px, transparent 0.6px);
+  background-size: 5px 5px;
+}
+
+.identity-orbit {
+  position: absolute;
+  top: 17%;
+  left: 50%;
+  width: 82vmin;
+  height: 82vmin;
+  border: 0.42vmin solid rgba(201, 20, 46, 0.24);
+  border-right-color: transparent;
+  border-bottom-color: rgba(201, 20, 46, 0.08);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.identity-orbit span {
+  position: absolute;
+  top: 13%;
+  right: 14%;
+  width: 2vmin;
+  height: 2vmin;
+  min-width: 9px;
+  min-height: 9px;
+  border-radius: 50%;
+  background: var(--hk-red);
+  box-shadow: 0 0 0 0.8vmin rgba(201, 20, 46, 0.11);
+}
+
+.identity-kicker {
+  position: absolute;
+  z-index: 3;
+  top: 12.2%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  color: var(--hk-red);
+  font-size: clamp(0.75rem, 2.05vmin, 1.55rem);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.19em;
+  text-align: center;
+}
+
+.identity-logo {
+  z-index: 2;
+  top: 22.5%;
+  width: 91vw;
+  height: 47vh;
+  border-radius: 50%;
+}
+
+.identity-name {
+  position: absolute;
+  z-index: 4;
+  top: 69.7%;
+  left: 5%;
+  width: 90%;
+  margin: 0;
+  color: var(--hk-ink);
+  font-family: var(--hk-display);
+  font-size: clamp(2rem, 9.2vmin, 6rem);
+  font-weight: 400;
+  line-height: 1.02;
+  text-align: center;
+  will-change: transform, opacity, clip-path;
+}
+
+.identity-underline {
+  position: absolute;
+  top: 82.2%;
+  left: 39%;
+  width: 22%;
+  height: 0.7vmin;
+  min-height: 3px;
+  background: var(--hk-red);
+  transform-origin: center;
+}
+
+.identity-location {
+  position: absolute;
+  bottom: 7.8%;
+  left: 0;
+  width: 100%;
+  color: var(--hk-muted);
+  font-size: clamp(0.7rem, 1.95vmin, 1.4rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.18em;
+  text-align: center;
+}
+
+/* 02 — abstract route and marker, not a literal or inaccurate map. */
+.scene-location {
+  background: #181719;
+  color: var(--hk-paper);
+}
+
+.location-grid {
+  position: absolute;
+  inset: -4%;
+  opacity: 0.09;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 12vmin 12vmin;
+  transform: rotate(-10deg);
+}
+
+.location-route {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: rgba(239, 51, 64, 0.66);
+}
+
+.location-pin-tail {
+  position: absolute;
+  top: 27%;
+  left: 50%;
+  width: 1px;
+  height: 23vh;
+  background: linear-gradient(var(--hk-red-bright), rgba(239, 51, 64, 0));
+  transform-origin: top center;
+}
+
+.location-copy {
+  position: absolute;
+  z-index: 3;
+  top: 39%;
+  left: 8.5%;
+  width: 83%;
+}
+
+.scene-location .film-eyebrow {
+  margin-bottom: 1.4rem;
+  color: #ff596a;
+}
+
+.location-copy h2 {
+  margin: 0;
+  font-family: var(--hk-display);
+  font-size: clamp(3rem, 13.1vmin, 8.5rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.location-copy h2 span {
+  color: #ff5265;
+}
+
+.location-country {
+  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: clamp(1rem, 4.5vmin, 2.7rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.location-rule {
+  width: 100%;
+  height: 1px;
+  margin: 1.3rem 0 1rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.location-rule span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #ff5265;
+  transform-origin: left;
+}
+
+.location-copy address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.26em;
+  color: rgba(255, 255, 255, 0.93);
+  font-size: clamp(1.15rem, 4.55vmin, 2.6rem);
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.location-coordinate {
+  position: absolute;
+  right: 8.5%;
+  bottom: 7.7%;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: clamp(0.67rem, 1.9vmin, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+/* 03 — typographic inversion and a single oversized 24-hour dial. */
+.scene-emergency {
+  background: var(--hk-red);
+  color: var(--hk-white);
+}
+
+.emergency-dial {
+  position: absolute;
+  top: 19%;
+  left: 50%;
+  width: 63vmin;
+  height: 63vmin;
+  border: 0.46vmin solid rgba(255, 255, 255, 0.76);
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.dial-notch {
+  position: absolute;
+  top: -0.5%;
+  left: 50%;
+  width: 0.45vmin;
+  height: 5.2vmin;
+  min-width: 2px;
+  border-radius: 9px;
+  background: var(--hk-white);
+  transform-origin: 50% 625%;
+}
+
+.notch-two { transform: rotate(90deg); }
+.notch-three { transform: rotate(180deg); }
+.notch-four { transform: rotate(270deg); }
+
+.emergency-eyebrow {
+  position: absolute;
+  top: 12.2%;
+  left: 5%;
+  width: 90%;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(0.8rem, 2.05vmin, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  text-align: center;
+}
+
+.emergency-number {
+  position: absolute;
+  top: 20.5%;
+  left: 0;
+  width: 100%;
+  color: var(--hk-white);
+  font-family: var(--hk-body);
+  font-size: 62vmin;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.08em;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.emergency-hours {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  color: var(--hk-white);
+  font-size: clamp(1rem, 4.1vmin, 2.6rem);
+  font-weight: 700;
+  text-align: center;
+  will-change: transform, opacity;
+}
+
+.emergency-notice {
+  position: absolute;
+  bottom: 14.5%;
+  left: 8%;
+  width: 84%;
+  padding: 1.05em 0.9em;
+  background: var(--hk-white);
+  color: var(--hk-ink);
+  font-size: clamp(1.05rem, 4.45vmin, 2.8rem);
+  font-weight: 600;
+  line-height: 1.28;
+  text-align: center;
+  will-change: clip-path, opacity;
+}
+
+.emergency-footline {
+  position: absolute;
+  bottom: 9%;
+  left: 34%;
+  width: 32%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.76);
+  transform-origin: center;
+}
+
+/* 04 — the full supplied service list forms a single portrait index. */
+.scene-services {
+  background: var(--hk-paper);
+  color: var(--hk-ink);
+}
+
+.services-heading {
+  position: absolute;
+  top: 12.8%;
+  left: 8.5%;
+  width: 83%;
+}
+
+.services-heading h2 {
+  margin: 0.65rem 0 0;
+  color: var(--hk-ink);
+  font-family: var(--hk-display);
+  font-size: clamp(2.7rem, 9.7vmin, 6rem);
+  font-weight: 400;
+  line-height: 0.98;
+}
+
+.services-list {
+  position: absolute;
+  top: 30.5%;
+  left: 8.5%;
+  display: flex;
+  width: 83%;
+  flex-direction: column;
+}
+
+.service-row {
+  position: relative;
+  display: flex;
+  min-height: 6.35vh;
+  align-items: center;
+  gap: 0.8rem;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(24, 23, 25, 0.14);
+  color: var(--hk-ink);
+  font-size: clamp(0.86rem, 3.85vmin, 2.45rem);
+  font-weight: 550;
+  line-height: 1.16;
+  will-change: clip-path, transform, opacity;
+}
+
+.service-bullet {
+  display: inline-block;
+  width: 0.72vmin;
+  height: 0.72vmin;
+  min-width: 4px;
+  min-height: 4px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--hk-red);
+}
+
+.service-rule {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 42%;
+  height: 1px;
+  background: var(--hk-red);
+  transform-origin: left;
+}
+
+.services-index {
+  position: absolute;
+  bottom: 8%;
+  left: 8.5%;
+  color: var(--hk-muted);
+  font-size: clamp(0.67rem, 1.9vmin, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+/* 05 — abstract changing consultation windows, deliberately without times. */
+.scene-doctors {
+  background: #f4f0ec;
+  color: var(--hk-ink);
+}
+
+.doctor-copy {
+  position: absolute;
+  z-index: 2;
+  top: 20.5%;
+  left: 9%;
+  width: 82%;
+}
+
+.doctor-copy h2 {
+  margin: 1.1rem 0 0;
+  color: var(--hk-ink);
+  font-family: var(--hk-display);
+  font-size: clamp(4.4rem, 16.4vmin, 11rem);
+  font-weight: 400;
+  line-height: 0.83;
+  letter-spacing: -0.025em;
+}
+
+.doctor-copy h2 span {
+  color: var(--hk-red);
+}
+
+.doctor-note {
+  display: inline-block;
+  margin: 1.4rem 0 0;
+  color: var(--hk-ink);
+  font-size: clamp(1.1rem, 4.6vmin, 2.9rem);
+  font-weight: 500;
+  line-height: 1.4;
+  will-change: clip-path, opacity;
+}
+
+.doctor-bands {
+  position: absolute;
+  right: 9%;
+  bottom: 17.5%;
+  left: 9%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3vh;
+  align-items: flex-start;
+}
+
+.doctor-band {
+  position: relative;
+  height: 1.25vmin;
+  min-height: 5px;
+  border-radius: 99px;
+  background: rgba(201, 20, 46, 0.12);
+  will-change: width, transform, opacity;
+}
+
+.doctor-band::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--hk-red);
+  content: '';
+}
+
+.doctor-band-2 { background: rgba(24, 23, 25, 0.12); }
+.doctor-band-2::after { background: var(--hk-ink); }
+.doctor-band-4 { background: rgba(24, 23, 25, 0.12); }
+.doctor-band-4::after { background: var(--hk-ink); }
+
+.doctor-band-dot {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: -0.5vmin;
+  width: 2.6vmin;
+  height: 2.6vmin;
+  min-width: 10px;
+  min-height: 10px;
+  border: 0.65vmin solid var(--hk-paper);
+  border-radius: 50%;
+  background: var(--hk-red);
+  transform: translateY(-50%);
+}
+
+.doctor-directory-label {
+  position: absolute;
+  bottom: 7.7%;
+  left: 9%;
+  color: var(--hk-muted);
+  font-size: clamp(0.67rem, 1.9vmin, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.17em;
+}
+
+/* 06 — quiet contact close and a matching circular exit for the loop. */
+.scene-contact {
+  background: var(--hk-paper);
+  color: var(--hk-ink);
+}
+
+.contact-brand-crop {
+  position: absolute;
+  top: 12.8%;
+  left: 50%;
+  width: 90vw;
+  height: 42vh;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--hk-white);
+  transform: translateX(-50%);
+  will-change: transform, opacity;
+}
+
+.contact-brand-crop img {
+  width: 145vmin;
+  mix-blend-mode: multiply;
+}
+
+.contact-lower {
+  position: absolute;
+  top: 57.5%;
+  left: 8.5%;
+  width: 83%;
+  text-align: center;
+}
+
+.contact-tagline {
+  margin: 0;
+  color: var(--hk-red);
+  font-size: clamp(0.86rem, 4.15vmin, 2.6rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.contact-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.58rem;
+  margin-top: 1.2rem;
+}
+
+.contact-lines p {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0.72rem 0.2rem;
+  border-bottom: 1px solid rgba(24, 23, 25, 0.17);
+  text-align: left;
+  will-change: transform, opacity;
+}
+
+.contact-lines span {
+  flex: 0 0 auto;
+  color: var(--hk-red);
+  font-size: clamp(0.78rem, 2.9vmin, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.contact-lines strong {
+  color: var(--hk-ink);
+  font-family: var(--hk-body);
+  font-size: clamp(1.3rem, 6.5vmin, 3.9rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.contact-red-rule {
+  width: 100%;
+  height: 0.65vmin;
+  min-height: 3px;
+  margin-top: 1rem;
+  background: var(--hk-red);
+  transform-origin: left center;
+}
+
+.contact-footer {
+  position: absolute;
+  right: 6%;
+  bottom: 6.5%;
+  left: 6%;
+  color: var(--hk-muted);
+  font-size: clamp(0.68rem, 2.05vmin, 1.35rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .film-scene,
+  .film-carrier {
+    will-change: auto;
+  }
+}
