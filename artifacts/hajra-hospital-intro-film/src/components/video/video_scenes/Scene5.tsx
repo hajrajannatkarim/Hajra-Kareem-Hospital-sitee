@@ -7,7 +7,7 @@ const BAND_WIDTHS = ['76%', '54%', '88%', '64%'];
 
 export function Scene5() {
   const [handoff, setHandoff] = useState(false);
-  useSceneTimer([{ time: 2980, callback: () => setHandoff(true) }]);
+  useSceneTimer([{ time: 3600, callback: () => setHandoff(true) }]);
 
   return (
     <motion.section

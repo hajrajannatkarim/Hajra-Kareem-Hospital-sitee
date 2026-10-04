@@ -6,7 +6,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Scene6() {
   const [handoff, setHandoff] = useState(false);
-  useSceneTimer([{ time: 3450, callback: () => setHandoff(true) }]);
+  useSceneTimer([{ time: 4200, callback: () => setHandoff(true) }]);
 
   return (
     <motion.section
@@ -26,7 +26,7 @@ export function Scene6() {
         transition={{ duration: handoff ? 0.64 : 0.55, ease: EASE }}
       >
         <img
-          src={`${import.meta.env.BASE_URL}images/hajra-karim-logo.png`}
+          src={`${import.meta.env.BASE_URL}images/hajra-karim-logo-full.png`}
           alt="Hajra Kareem Hospital logo"
         />
       </motion.div>

@@ -5,7 +5,7 @@ import {
   type VideoAspectRatio,
   useVideoPlayer,
 } from '@/lib/video';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Scene1 } from './video_scenes/Scene1';
 import { Scene2 } from './video_scenes/Scene2';
 import { Scene3 } from './video_scenes/Scene3';
@@ -34,12 +34,12 @@ const SCENE_COMPONENTS = {
 } as const;
 
 const CARRIER_POSES = [
-  { left: '50%', top: '35%', width: '10vmin', height: '10vmin', borderColor: '#c9142e' },
-  { left: '50%', top: '23%', width: '14vmin', height: '14vmin', borderColor: '#ef3340' },
-  { left: '50%', top: '39%', width: '57vmin', height: '57vmin', borderColor: '#ffffff' },
-  { left: '89%', top: '84%', width: '10vmin', height: '10vmin', borderColor: '#c9142e' },
-  { left: '19%', top: '83%', width: '9vmin', height: '9vmin', borderColor: '#c9142e' },
-  { left: '50%', top: '38%', width: '10vmin', height: '10vmin', borderColor: '#c9142e' },
+  { left: '26%', top: '31.5%', width: '8vmin', height: '8vmin', borderColor: '#c9142e', opacity: 0 },
+  { left: '50%', top: '23%', width: '14vmin', height: '14vmin', borderColor: '#ef3340', opacity: 0.78 },
+  { left: '50%', top: '36.7%', width: '63vmin', height: '63vmin', borderColor: '#ffffff', opacity: 0.58 },
+  { left: '89%', top: '84%', width: '10vmin', height: '10vmin', borderColor: '#c9142e', opacity: 0.68 },
+  { left: '19%', top: '83%', width: '9vmin', height: '9vmin', borderColor: '#c9142e', opacity: 0.7 },
+  { left: '26%', top: '31.5%', width: '8vmin', height: '8vmin', borderColor: '#c9142e', opacity: 0.18 },
 ] as const;
 
 export default function VideoTemplate({
@@ -79,10 +79,16 @@ export default function VideoTemplate({
           )}
         </AnimatePresence>
         {sceneIndex >= 0 && (
-          <div className="film-carrier-layer" aria-hidden="true">
-            <div
+          <div
+            className="film-carrier-layer"
+            data-scene-index={sceneIndex}
+            aria-hidden="true"
+          >
+            <motion.div
               className="film-carrier"
-              style={CARRIER_POSES[sceneIndex]}
+              initial={false}
+              animate={CARRIER_POSES[sceneIndex]}
+              transition={{ duration: 0.62, ease: [0.22, 1, 0.36, 1] }}
             />
           </div>
         )}

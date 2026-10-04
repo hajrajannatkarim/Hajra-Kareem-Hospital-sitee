@@ -15,7 +15,7 @@ const SERVICES = [
 
 export function Scene4() {
   const [handoff, setHandoff] = useState(false);
-  useSceneTimer([{ time: 4010, callback: () => setHandoff(true) }]);
+  useSceneTimer([{ time: 4800, callback: () => setHandoff(true) }]);
 
   return (
     <motion.section

@@ -6,7 +6,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Scene3() {
   const [handoff, setHandoff] = useState(false);
-  useSceneTimer([{ time: 3200, callback: () => setHandoff(true) }]);
+  useSceneTimer([{ time: 3800, callback: () => setHandoff(true) }]);
 
   return (
     <motion.section
@@ -18,11 +18,11 @@ export function Scene3() {
     >
       <motion.div
         className="emergency-dial"
-        initial={{ scale: 0.88, rotate: -9 }}
+        initial={{ scale: 0.16, rotate: -9, y: '-35%' }}
         animate={
           handoff
-            ? { scale: 1.36, rotate: 24, opacity: 0 }
-            : { scale: 1, rotate: 0, opacity: 1 }
+            ? { scale: 1.36, rotate: 24, y: 0, opacity: 0 }
+            : { scale: 1, rotate: 0, y: 0, opacity: 1 }
         }
         transition={{ duration: handoff ? 0.58 : 0.72, ease: EASE }}
         aria-hidden="true"

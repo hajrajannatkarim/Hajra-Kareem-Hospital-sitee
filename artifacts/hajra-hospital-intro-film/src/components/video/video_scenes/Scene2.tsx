@@ -6,7 +6,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export function Scene2() {
   const [handoff, setHandoff] = useState(false);
-  useSceneTimer([{ time: 2950, callback: () => setHandoff(true) }]);
+  useSceneTimer([{ time: 3500, callback: () => setHandoff(true) }]);
 
   return (
     <motion.section
