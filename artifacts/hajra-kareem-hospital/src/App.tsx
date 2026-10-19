@@ -55,13 +55,26 @@ function SectionHeading({
   );
 }
 
-function Logo({ compact = false }: { compact?: boolean }) {
+function Logo({
+  compact = false,
+  transparent = false,
+}: {
+  compact?: boolean;
+  transparent?: boolean;
+}) {
+  const imageSrc = transparent
+    ? '/assets/hajra-karim-logo-transparent.png'
+    : '/assets/hajra-karim-logo.png';
+  const imageClassName = compact
+    ? 'h-14 w-14 object-contain object-center'
+    : 'h-20 w-20 object-contain object-center sm:h-24 sm:w-24';
+
   return (
     <a href="#home" className="inline-flex items-center" aria-label="Hajra Kareem Hospital home" data-testid="link-logo-home">
       <img
-        src="/assets/hajra-karim-logo.png"
+        src={imageSrc}
         alt="Hajra Kareem Hospital logo"
-        className={compact ? 'h-14 w-14 object-contain object-center' : 'h-20 w-20 object-contain object-center sm:h-24 sm:w-24'}
+        className={imageClassName}
       />
     </a>
   );
@@ -97,7 +110,7 @@ function Header({ openInquiry }: { openInquiry: () => void }) {
       </div>
       <div className="site-container flex h-[76px] items-center justify-between gap-5">
         <div className="flex min-w-0 items-center gap-3">
-          <Logo compact />
+          <Logo compact transparent />
           <div className="hidden min-w-0 sm:block">
             <p className="truncate text-[0.68rem] font-bold uppercase tracking-[0.16em] text-primary">Hajra Kareem</p>
             <p className="text-sm font-semibold tracking-tight text-foreground">Hospital</p>
@@ -141,9 +154,11 @@ function Hero({ openInquiry }: { openInquiry: () => void }) {
       <div className="hero-orbit pointer-events-none" aria-hidden="true" />
       <div className="site-container relative grid min-h-[620px] items-center gap-10 py-16 lg:grid-cols-[1.06fr_0.94fr] lg:py-20">
         <div className="max-w-2xl">
-          <div className="reveal mb-2">
-            <Logo />
-          </div>
+          <img
+            src="/assets/hajra-hospital-building.jpeg"
+            alt="Hajra Kareem Hospital building"
+            className="reveal mb-6 block aspect-[2.16/1] w-full max-w-[520px] rounded-[1.5rem] border border-border object-cover object-center shadow-lg shadow-foreground/10"
+          />
           <div className="reveal inline-flex items-center gap-2 rounded-full border border-primary/20 bg-card/80 px-3 py-2 text-xs font-bold text-primary">
             <span className="h-2 w-2 rounded-full bg-primary" /> A hospital for patients and families
           </div>
