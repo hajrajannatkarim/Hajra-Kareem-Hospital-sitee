@@ -63,8 +63,8 @@ function Logo({
   transparent?: boolean;
 }) {
   const imageSrc = transparent
-    ? '/assets/hajra-karim-logo-transparent.png'
-    : '/assets/hajra-karim-logo.png';
+    ? import.meta.env.BASE_URL + 'assets/hajra-karim-logo-transparent.png'
+    : import.meta.env.BASE_URL + 'assets/hajra-karim-logo.png';
   const imageClassName = compact
     ? 'h-14 w-14 object-contain object-center'
     : 'h-20 w-20 object-contain object-center sm:h-24 sm:w-24';
