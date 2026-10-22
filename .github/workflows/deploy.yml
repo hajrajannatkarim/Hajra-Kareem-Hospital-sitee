@@ -1,0 +1,51 @@
+   name: Deploy to GitHub Pages
+   on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --no-frozen-lockfile
+      - name: Build website
+        id: build
+        env:
+          PORT: "3000"
+          BASE_PATH: /Hajra-Kareem-Hospital-sitee/
+          NODE_ENV: production
+        run: |
+          CFG=$(find artifacts -maxdepth 3 -name "vite.config.*" -not -path "*/node_modules/*" -not -path "*mockup*" | head -1)
+          APP=$(dirname "$CFG")
+          echo "Building $APP"
+          pnpm --filter "./$APP" run build
+          OUT=$(ls -d "$APP/dist/public" "$APP/dist" 2>/dev/null | head -1)
+          cp "$OUT/index.html" "$OUT/404.html"
+          echo "out=$OUT" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.build.outputs.out }}
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
