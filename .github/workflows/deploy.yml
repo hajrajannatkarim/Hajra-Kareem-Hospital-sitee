@@ -34,7 +34,7 @@ jobs:
           APP=$(dirname "$CFG")
           echo "Building $APP"
           pnpm --filter "./$APP" run build
-          OUT=$(ls -d "$APP/dist/public" "$APP/dist" 2>/dev/null | head -1)
+          OUT="$APP/dist/public"
           cp "$OUT/index.html" "$OUT/404.html"
           echo "out=$OUT" >> "$GITHUB_OUTPUT"
       - uses: actions/upload-pages-artifact@v3
