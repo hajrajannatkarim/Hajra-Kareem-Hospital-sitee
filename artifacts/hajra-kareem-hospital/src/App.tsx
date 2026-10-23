@@ -155,7 +155,7 @@ function Hero({ openInquiry }: { openInquiry: () => void }) {
       <div className="site-container relative grid min-h-[620px] items-center gap-10 py-16 lg:grid-cols-[1.06fr_0.94fr] lg:py-20">
         <div className="max-w-2xl">
           <img
-            src="/assets/hajra-hospital-building.jpeg"
+            src={import.meta.env.BASE_URL + 'assets/hajra-hospital-building.jpeg'}
             alt="Hajra Kareem Hospital building"
             className="reveal mb-6 block aspect-[2.16/1] w-full max-w-[520px] rounded-[1.5rem] border border-border object-cover object-center shadow-lg shadow-foreground/10"
           />
