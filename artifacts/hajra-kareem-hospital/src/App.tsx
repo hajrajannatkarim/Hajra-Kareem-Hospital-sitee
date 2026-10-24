@@ -436,7 +436,10 @@ function InquiryDialog({ onClose }: { onClose: () => void }) {
 }
 
 function HospitalHome() {
-  const [inquiryOpen, setInquiryOpen] = useState(false);
+  const inquiryOpen = false;
+  const setInquiryOpen = (open: boolean) => {
+    if (open) window.open('https://wa.me/923008655277?text=Assalam o Alaikum, I would like to make an inquiry.', '_blank');
+  };
 
   useEffect(() => {
     const targets = document.querySelectorAll<HTMLElement>('.reveal-on-scroll');
