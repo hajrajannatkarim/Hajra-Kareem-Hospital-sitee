@@ -7,8 +7,8 @@ export const hospitalData = {
   name: 'Hajra Kareem Hospital',
   tagline: 'Care • Compassion • Cure',
   address: '186-D, Batala Colony, Babar Chowk, Faisalabad, Pakistan',
-  landline: '041-8500586',
-  whatsapp: '0300-8655277',
+  landline: '0418500586',
+  whatsapp: '03008655277',
   directionsUrl: 'https://maps.app.goo.gl/kJZcbwz45EFpeb9VA',
   mapEmbed:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.5608661186016!2d73.09832297577883!3d31.39866985314452!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x392267e2684a29f1%3A0x61169ea436934787!2sHajrah%20Kareem%20Hospital!5e0!3m2!1sen!2s!4v1790462487336!5m2!1sen!2s',
